@@ -170,27 +170,19 @@ def run_ffplay(rtsp_url):
 
 
 if __name__ == "__main__":
-  print(BANNER)
-
-
+    print(BANNER)
 
     use_anon = ask_anonimity()
-
-
     target_ip = get_ip()
+    
     if target_ip:
         open_ports = scan_ports(target_ip, use_anon)
 
-        if 554 or 8554 in open_ports:
+        if 554 in open_ports or 8554 in open_ports:
             analyze_rtsp(target_ip)
             test_credentials_and_stream(target_ip)
         else:
             print("No RTSP ports found open. Try Diffrent IP Address.")
-            
-            
-
-
-
         
 
             
