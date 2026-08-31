@@ -169,8 +169,8 @@ def run_ffplay(rtsp_url):
 
 
 
-if _name_ == "_main_":
-    print(BANNER)
+if __name__ == "__main__":
+  print(BANNER)
 
 
 
