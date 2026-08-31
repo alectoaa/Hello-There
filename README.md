@@ -16,6 +16,9 @@
 
 ## 📦 Installation & Usage
 ```bash
-git clone [https://github.com/KULLANICI_ADIN/Hello-There.git](https://github.com/alectoaa/Hello-There.git)
+git clone https://github.com/alectoaa/Hello-There.git
 cd Hello-There
-python3 hellothere.py
+sudo chmod +x install.sh
+sudo ./install.sh
+hellothere
+
