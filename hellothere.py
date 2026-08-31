@@ -182,9 +182,10 @@ def typewriter_print(text, delay=0.001):
 
 
 if __name__ == "__main__":
+
     typewriter_print(BANNER, delay=0.001)
   
-  print(f"{CYAN}[*] RTSP Stream & IP Camera Intelligence Tool{RESET}")
+    print(f"{CYAN}[*] RTSP Stream & IP Camera Intelligence Tool{RESET}")
     print(f"{RED}[!] DISCLAIMER: This tool is for educational and authorized security testing purposes only.{RESET}")
     print(f"{RED}[!] Unauthorized access to target systems is illegal. Use at your own risk.{RESET}\n")
 
