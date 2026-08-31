@@ -7,6 +7,8 @@ import socket
 import subprocess
 import requests
 from requests.auth import HTTPBasicAuth, HTTPDigestAuth
+import sys
+import time
 
 
 RED = "\033[91m"
@@ -42,7 +44,7 @@ BANNER = f"""{RED}
 / __  /  __/ | | (_) |  / /  | | | |  __/ | |  __/
 \\/ /_/ \\___|_|_|\\___/   \\/   |_| |_|\\___|_|  \\___|
 {YELLOW} 
-                     [ made by alecto ]{RESET}
+              [ made by alecto ]{RESET}
 
 
 """
@@ -171,10 +173,20 @@ def run_ffplay(rtsp_url):
     cmd = ["ffplay", "-rtsp_transport", "tcp", rtsp_url]
     subprocess.run(cmd)
 
+def typewriter_print(text, delay=0.001):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(delay)
+
 
 
 if __name__ == "__main__":
-    print(BANNER)
+    typewriter_print(BANNER, delay=0.001)
+  
+  print(f"{CYAN}[*] RTSP Stream & IP Camera Intelligence Tool{RESET}")
+    print(f"{RED}[!] DISCLAIMER: This tool is for educational and authorized security testing purposes only.{RESET}")
+    print(f"{RED}[!] Unauthorized access to target systems is illegal. Use at your own risk.{RESET}\n")
 
     use_anon = ask_anonimity()
     target_ip = get_ip()
