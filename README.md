@@ -1,6 +1,6 @@
 # 👋 Hello There
 
-**Hello There** is a professional security tool designed for target IP scanning, RTSP service analysis, default credential testing, and live stream playback.
+**Hello There** is a professional pen-test tool designed for target IP scanning, RTSP service analysis, default credential testing, and live stream playback.
 
 ## 🚀 Features
 * Target port scanning (554, 80, 8080) with optional anonymity (Proxychains support)
