@@ -93,19 +93,24 @@ def scan_ports(target_ip, use_anon=False):
     print(f"\n{GREEN}[*] IP Address is scanning: {target_ip} ...{RESET}")
     ports = "80,554,8080,8554,8000"
 
-    cmd = ["nmap", "-sT", "-Pn", "-n", "-p", ports , target_ip]
+    cmd = ["nmap", "-sT", "-Pn", "-n", "-p", ports, target_ip]
     if use_anon:
         cmd = ["proxychains"] + cmd
 
-    
     open_ports = []
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         print(result.stdout)
 
-        for port in [554,8000,80,8080,8554]:
-            if f"{port}/tcp open" in result.stdout:
-                open_ports.append(port)
+        # Parse output line by line to handle flexible spacing
+        for line in result.stdout.splitlines():
+            # Looks for lines containing "/tcp" and "open"
+            if "/tcp" in line and "open" in line:
+                parts = line.split()
+                port_str = parts[0].split("/")[0]  # Extracts port number (e.g., '554')
+                if port_str.isdigit():
+                    open_ports.append(int(port_str))
+
     except subprocess.CalledProcessError as e:
         print(f"Error executing nmap: {e}")
     except FileNotFoundError:
