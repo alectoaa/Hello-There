@@ -185,20 +185,17 @@ def typewriter_print(text, delay=0.001):
         sys.stdout.flush()
         time.sleep(delay)
 
-
-
 if __name__ == "__main__":
 
     typewriter_print(BANNER, delay=0.001)
-  
+    
     print(f"{CYAN}[*] RTSP Stream & IP Camera Intelligence Tool{RESET}")
     print(f"{RED}[!] DISCLAIMER: This tool is for educational and authorized security testing purposes only.{RESET}")
     print(f"{RED}[!] Unauthorized access to target systems is illegal. Use at your own risk.{RESET}\n")
 
     use_anon = ask_anonimity()
-    target_ip = get_ip()
 
-  while True:
+    while True:
         target_ip = get_ip()
         
         if not target_ip:
@@ -207,8 +204,7 @@ if __name__ == "__main__":
                 print(f"{CYAN}[*] Programdan çıkılıyor...{RESET}")
                 break
             continue
-    
-    if target_ip:
+        
         open_ports = scan_ports(target_ip, use_anon)
 
         if 554 in open_ports or 8554 in open_ports:
@@ -217,12 +213,16 @@ if __name__ == "__main__":
             test_credentials_and_stream(target_ip)
         else:
             print(f"{RED}[!] No RTSP ports found open. Try Different IP Address.{RESET}")
-          continue  
+            continue  
 
         again = input(f"\n{CYAN}[?] Başka bir IP adresi taramak ister misiniz? (E/h): {RESET}").strip().lower()
         if again in ['h', 'no', 'n']:
             print(f"{CYAN}[*] Programdan çıkılıyor...{RESET}")
             break
+
+
+
+
           
           
           
