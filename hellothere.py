@@ -177,6 +177,7 @@ def run_ffplay(rtsp_url):
     print(f"[*] Starting live stream with ffplay: {rtsp_url}")
     cmd = ["ffplay", "-rtsp_transport", "tcp", rtsp_url]
     subprocess.run(cmd)
+  
 
 def typewriter_print(text, delay=0.001):
     for char in text:
@@ -206,6 +207,8 @@ if __name__ == "__main__":
             test_credentials_and_stream(target_ip)
         else:
             print(f"{RED}[!] No RTSP ports found open. Try Different IP Address.{RESET}")
+          
+          
 
             
 
