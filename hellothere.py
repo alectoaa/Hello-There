@@ -41,9 +41,9 @@ BANNER = f"""{RED}
 ..................................................
   /\\  /\\___| | | ___   /__   \\ |__   ___ _ __ ___ 
  / /_/ / _ \\ | |/ _ \\    / /\\/ '_ \\ / _ \\ '__/ _ \\
-/ __  /  __/ | | (_) |  / /  | | | |  __/ | |  __/
-\\/ /_/ \\___|_|_|\\___/   \\/   |_| |_|\\___|_|  \\___|
-{YELLOW} 
+/ __  /  __/ | | (_) |  / /   | | | |  __/ | |  __/
+\\/ /_/ \\___|_|_|\\___/   \\/    |_| |_|\\___|_|  \\___|
+{GREEN} 
               [ made by alecto ]{RESET}
 
 
@@ -82,7 +82,7 @@ def ask_anonimity():
 
 
 def get_ip():
-    target_ip = input(f"{CYAN}Enter the Target IP Adress{RESET}").strip()
+    target_ip = input(f"{CYAN}Enter the Target IP Adress: {RESET}").strip()
     parts = target_ip.split('.')
     if len(parts) != 4 or not all(part.isdigit() and 0 <= int(part) <= 255 for part in parts):
         print("Invalid IP address format.")
@@ -177,13 +177,13 @@ def run_ffplay(rtsp_url):
     print(f"[*] Starting live stream with ffplay: {rtsp_url}")
     cmd = ["ffplay", "-rtsp_transport", "tcp", rtsp_url]
     subprocess.run(cmd)
-  
 
 def typewriter_print(text, delay=0.001):
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(delay)
+
 
 if __name__ == "__main__":
 
@@ -219,41 +219,3 @@ if __name__ == "__main__":
         if again in ['h', 'no', 'n']:
             print(f"{CYAN}[*] Programdan çıkılıyor...{RESET}")
             break
-
-
-
-
-          
-          
-          
-
-            
-
-
-
-
-
-    
-    
-
-
-
-
-
-    
-
-    
-    
-
-
-
-    
-
-    
-
-
-
-
-
-
-
