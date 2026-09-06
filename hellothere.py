@@ -197,6 +197,16 @@ if __name__ == "__main__":
 
     use_anon = ask_anonimity()
     target_ip = get_ip()
+
+  while True:
+        target_ip = get_ip()
+        
+        if not target_ip:
+            retry = input(f"{YELLOW}[?] Tekrar denemek ister misiniz? (E/h): {RESET}").strip().lower()
+            if retry in ['h', 'no', 'n']:
+                print(f"{CYAN}[*] Programdan çıkılıyor...{RESET}")
+                break
+            continue
     
     if target_ip:
         open_ports = scan_ports(target_ip, use_anon)
@@ -207,6 +217,13 @@ if __name__ == "__main__":
             test_credentials_and_stream(target_ip)
         else:
             print(f"{RED}[!] No RTSP ports found open. Try Different IP Address.{RESET}")
+          continue  
+
+        again = input(f"\n{CYAN}[?] Başka bir IP adresi taramak ister misiniz? (E/h): {RESET}").strip().lower()
+        if again in ['h', 'no', 'n']:
+            print(f"{CYAN}[*] Programdan çıkılıyor...{RESET}")
+            break
+          
           
           
 
