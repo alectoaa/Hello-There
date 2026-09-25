@@ -7,7 +7,6 @@
 * RTSP authentication type detection (Basic / Digest)
 * Brand-specific default credential testing (Hikvision, Dahua, Axis, Uniview, etc.)
 * Instant live stream playback via `ffplay`
-* Custom ASCII banner interface
 
 ## ⚙️ Requirements
 * Python 3.x
