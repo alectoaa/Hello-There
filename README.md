@@ -19,4 +19,8 @@ git clone https://github.com/alectoaa/Hello-There.git
 cd Hello-There
 sudo chmod +x install.sh
 sudo ./install.sh
+hellothere
+
+
+
 
