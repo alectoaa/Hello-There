@@ -22,31 +22,6 @@ sudo ./install.sh
 hellothere
 
 
-### 📐 System Architecture & Workflow
-
-```text
-[ Target Input / IP Range ]
-          │
-          ▼
-[ Port & RTSP Discovery Module ]
-          │
-    ┌─────┴─────┐
-    │ Is Port   │
-    │ 554 Open? │
-    └─────┬─────┘
-       NO │          YES
-          ├──────────────┐
-          ▼              ▼
-   [ Log: Closed ]   [ Credential Assessment Engine ]
-                         │
-                         ▼
-             [ RTSP Stream Validation ]
-             [  (OpenCV Frame Grab)   ]
-                         │
-                         ▼
-             [ Results Logger & Output ]
-
-
 
 
 
