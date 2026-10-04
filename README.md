@@ -13,6 +13,32 @@
 * Nmap
 * FFmpeg (`ffplay`)
 
+
+### 📐 System Architecture & Workflow
+
+```text
+[ Target Input / IP Range ]
+          │
+          ▼
+[ Port & RTSP Discovery Module ]
+          │
+    ┌─────┴─────┐
+    │ Is Port   │
+    │ 554 Open? │
+    └─────┬─────┘
+       NO │          YES
+          ├──────────────┐
+          ▼              ▼
+   [ Log: Closed ]   [ Credential Assessment Engine ]
+                         │
+                         ▼
+             [ RTSP Stream Validation ]
+             [  (OpenCV Frame Grab)   ]
+                         │
+                         ▼
+             [ Results Logger & Output ]
+
+
 ## 📦 Installation & Usage
 ```bash
 git clone https://github.com/alectoaa/Hello-There.git
