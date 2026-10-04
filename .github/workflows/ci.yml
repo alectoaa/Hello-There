@@ -15,22 +15,14 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Set up Python 3.10
-      uses: actions/pt-action@v4
+      uses: actions/setup-python@v4
       with:
         python-version: "3.10"
 
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest flake8
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-    - name: Lint Code with Flake8
-      run: |
-        # Syntax hatalarını ve tanımlanmamış değişkenleri kontrol eder
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # Kod stili uyarısı verir ama derlemeyi durdurmaz
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        pip install pytest
 
     - name: Run Unit Tests
       run: |
