@@ -13,6 +13,14 @@
 * Nmap
 * FFmpeg (`ffplay`)
 
+## 📦 Installation & Usage
+```bash
+git clone https://github.com/alectoaa/Hello-There.git
+cd Hello-There
+sudo chmod +x install.sh
+sudo ./install.sh
+hellothere
+
 
 ### 📐 System Architecture & Workflow
 
@@ -39,13 +47,7 @@
              [ Results Logger & Output ]
 
 
-## 📦 Installation & Usage
-```bash
-git clone https://github.com/alectoaa/Hello-There.git
-cd Hello-There
-sudo chmod +x install.sh
-sudo ./install.sh
-hellothere
+
 
 
 
