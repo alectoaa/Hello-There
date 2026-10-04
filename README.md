@@ -17,12 +17,12 @@
 
 ```mermaid
 flowchart TD
-    A[Target Input / IP Range] --> B[Port & RTSP Discovery Module]
-    B --> C{RTSP Port 554 Open?}
-    C -- No --> D[Log: Host Unreachable / Port Closed]
-    C -- Yes --> E[Credential Assessment Engine]
-    E --> F[RTSP Stream Validation / OpenCV Frame Grab]
-    F --> G[Results Logger & Output Format]
+    A["Target Input / IP Range"] --> B["Port & RTSP Discovery Module"]
+    B --> C{"RTSP Port 554 Open?"}
+    C -- No --> D["Log: Host Unreachable / Port Closed"]
+    C -- Yes --> E["Credential Assessment Engine"]
+    E --> F["RTSP Stream Validation / OpenCV Frame Grab"]
+    F --> G["Results Logger & Output Format"]
 
 ## 📦 Installation & Usage
 ```bash
