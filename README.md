@@ -13,15 +13,6 @@
 * Nmap
 * FFmpeg (`ffplay`)
 
-## 📦 Installation & Usage
-```bash
-git clone https://github.com/alectoaa/Hello-There.git
-cd Hello-There
-sudo chmod +x install.sh
-sudo ./install.sh
-hellothere
-
-
 ### 📐 System Architecture & Workflow
 
 ```mermaid
@@ -32,6 +23,15 @@ flowchart TD
     C -- Yes --> E[Credential Assessment Engine]
     E --> F[RTSP Stream Validation / OpenCV Frame Grab]
     F --> G[Results Logger & Output Format]
+
+## 📦 Installation & Usage
+```bash
+git clone https://github.com/alectoaa/Hello-There.git
+cd Hello-There
+sudo chmod +x install.sh
+sudo ./install.sh
+hellothere
+
 
 
 
